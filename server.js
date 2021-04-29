@@ -4,8 +4,8 @@ const mongoose = require("mongoose");
 
 const PORT = process.env.PORT || 3000;
 
-// const Cardio = require("./cardioModel.js");
-// const Resistance = require("./resistanceModel.js");
+const Cardio = require("./models/cardioModel.js");
+const Resistance = require("./models/resistanceModel.js");
 const app = express();
 
 app.use(logger("dev"));
