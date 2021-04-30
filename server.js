@@ -29,9 +29,12 @@ app.post("/api/workouts", ({ body }, res) => {
       });
 });
 
-app.post("/api/workouts/:id", ({ body }, res) => {
-  db.Exercise.create(body)
-    .then(({_id}) => db.Workout.findOneAndUpdate({}, { $push: { exercises: _id } }, { new: true }))
+app.put("/api/workouts/:id", (req, res) => {
+  console.log(req.body)
+  const id = req.params.id;
+  console.log(id)
+  db.Exercise.create(req.body)
+    .then((exercise) => db.Workout.findOneAndUpdate({_id: id}, { $push: { exercises: exercise } }, { new: true }))
     .then(dbWorkout => {
       res.json(dbWorkout);
     })
@@ -43,3 +46,5 @@ app.post("/api/workouts/:id", ({ body }, res) => {
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
 });
+
+//db.Workout.findOneAndUpdate({}, { $push: { exercises: _id } }, { new: true }
