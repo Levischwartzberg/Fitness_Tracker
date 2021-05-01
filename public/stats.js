@@ -21,7 +21,8 @@ function generatePalette() {
   return arr;
 }
 
-function populateChart(data) {
+function populateChart(dataObj) {
+  const data = dataObj;
   let durations = data.map(({ totalDuration }) => totalDuration);
   let pounds = calculateTotalWeight(data);
   let workouts = workoutNames(data);
@@ -174,6 +175,7 @@ function populateChart(data) {
 }
 
 function calculateTotalWeight(data) {
+  console.log(data)
   let totals = [];
 
   data.forEach((workout) => {
