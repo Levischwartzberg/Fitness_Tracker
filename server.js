@@ -109,7 +109,7 @@ app.get("/api/workouts/range", async (req, res) => {
         }
       }
     }
-  ])
+  ]).limit(7)
   .then(dbWorkout => {
     res.json(dbWorkout);
   })
